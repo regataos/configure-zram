@@ -1,0 +1,13 @@
+[Unit]
+Description=Swap with zram
+Before=display-manager.service
+
+[Service]
+Type=oneshot 
+RemainAfterExit=true
+ExecStartPre=
+ExecStart=/bin/bash /usr/bin/regataos-zram.sh
+ExecStop=/sbin/swapoff /dev/zram0
+
+[Install]
+WantedBy=graphical.target
